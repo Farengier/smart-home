@@ -1,0 +1,3 @@
+build:
+	GOOS=linux GOARCH=arm GOARM=6 go build -o bin/smart-home-server_armv6 ./cmd/server/...
+PHONY: build
