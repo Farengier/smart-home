@@ -1,0 +1,5 @@
+time="2023-05-04T14:07:52+03:00" level=info msg="[Web] Starting server"
+time="2023-05-04T14:07:52+03:00" level=info msg="[Signal] Waiting stop signal"
+time="2023-05-04T14:07:58+03:00" level=info msg="[Signal] Stop signal received, shutdown initiated"
+time="2023-05-04T14:07:58+03:00" level=info msg="[Web] Shutdown server"
+time="2023-05-04T14:07:58+03:00" level=info msg="[Server] Closing"
