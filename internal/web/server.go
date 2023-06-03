@@ -47,7 +47,7 @@ func Start(cfg Config) {
 
 		return nil
 	})
-	_ = srv.ListenAndServe()
+	signal.Run(func() { _ = srv.ListenAndServe() })
 }
 
 func testHandler(rw http.ResponseWriter, r *http.Request) {

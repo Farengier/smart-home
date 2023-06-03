@@ -6,10 +6,13 @@ import (
 	"io"
 	"os"
 
-	"github.com/Farengier/smart-home/internal/signal"
-	"github.com/Farengier/smart-home/internal/web"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
+
+	"github.com/Farengier/smart-home/internal/db"
+	"github.com/Farengier/smart-home/internal/signal"
+	"github.com/Farengier/smart-home/internal/telegram"
+	"github.com/Farengier/smart-home/internal/web"
 )
 
 var conf *string
@@ -36,7 +39,17 @@ func main() {
 	}
 
 	signal.Init()
-	signal.Run(func() { web.Start(cfg.Server) })
+
+	dbc, err := db.New(cfg.DataBase)
+	if err != nil {
+		panic(err)
+	}
+
+	web.Start(cfg.Server)
+	err = telegram.StartBot(cfg.Telegram, dbc)
+	if err != nil {
+		signal.Shutdown()
+	}
 	signal.Wait()
 	log.Info("[Server] Closing")
 }

@@ -1,3 +1,4 @@
+adminKey: "YOUR_ADMIN_KEY"
 log:
   path: "example/log.log"
   level: "DEBUG"
@@ -6,3 +7,12 @@ server:
   port: 5080
   read_timeout: 15
   write_timeout: 15
+telegram:
+  token: "YOUR_TELEGRAM_TOKEN"
+  spam_timeout:
+    sensitive: "1m"
+    low: "1s"
+db:
+  path: "example"
+  sync: "1h"
+  backups: 2

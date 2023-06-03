@@ -49,6 +49,10 @@ func OnShutdown(fn func() error) {
 	onShutdown = append(onShutdown, fn)
 }
 
+func Shutdown() {
+	exitCh <- os.Interrupt
+}
+
 func Wait() {
 	wg.Wait()
 }
